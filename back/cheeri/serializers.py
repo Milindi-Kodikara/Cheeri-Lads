@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Event, Calendar
+from .models import Event, Agenda
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 class CalendarSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Calendar
+        model = Agenda
         fields = (
             "id",
             "events"

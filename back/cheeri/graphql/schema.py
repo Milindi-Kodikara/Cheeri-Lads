@@ -3,7 +3,7 @@ import graphene
 from graphene import relay
 from graphene_django.types import ObjectType, DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
-from cheeri.models import Calendar, Event, Feed
+from cheeri.models import Agenda, Event, Feed
 
 class EventNode(DjangoObjectType):
     class Meta:
@@ -21,8 +21,8 @@ class FeedNode(DjangoObjectType):
 
 class CalendarNode(DjangoObjectType):
     class Meta:
-        name = "Calendar"
-        model = Calendar
+        name = "Agenda"
+        model = Agenda
         filter_fields = ["id", "name"]
         interfaces = (relay.Node,)
 

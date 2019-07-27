@@ -18,7 +18,7 @@ class Feed(models.Model):
     events = models.ManyToManyField("Event", blank=False, related_name="feed")
 
 
-class Calendar(models.Model):
+class Agenda(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200)
     feeds = models.ManyToManyField("Feed", blank=False, related_name="calendars")
