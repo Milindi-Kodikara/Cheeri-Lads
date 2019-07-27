@@ -26,6 +26,8 @@ class CustomButton extends React.Component<CustomButtonProps, CustomButtonState>
                 style
             ]}
         >
+
+            {typeof React.Children.toArray(children)[0] == 'string' ?
             <CustomText
                 centered
                 style={[
@@ -33,7 +35,7 @@ class CustomButton extends React.Component<CustomButtonProps, CustomButtonState>
                     textStyle
                 ]}
                 {...textProps}
-            >{children}</CustomText>
+            >{children}</CustomText> : children}
         </TouchableOpacity>
     }
 }
