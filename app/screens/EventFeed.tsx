@@ -1,6 +1,6 @@
 import React from 'react';
 import EventList from "../containers/EventList";
-import {TouchableOpacity, Text, View} from "react-native";
+import {TouchableOpacity, Text, View, StyleSheet} from "react-native";
 
 
 interface EventFeedProps {
@@ -13,10 +13,19 @@ interface EventFeedState {
 export default class EventFeed extends React.Component<EventFeedProps, EventFeedState> {
     render() {
         return <View>
-            <EventList/>
-            <TouchableOpacity onPress={() => this.props.navigateToEventDetails("abc")}>
-                <Text>clck me</Text>
-            </TouchableOpacity>
+            {/* <Text style={styles.Heading}>Monthly Feed</Text> */}
+            <EventList navigateToEventDetails={this.props.navigateToEventDetails}/>
         </View>
     }
 }
+
+const styles = StyleSheet.create({
+
+
+    Heading: {
+        padding: 25,
+        fontSize: 25,
+        color: "#00F"
+    }
+
+});
