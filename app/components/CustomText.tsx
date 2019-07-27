@@ -64,7 +64,7 @@ class CustomText extends React.Component<CustomTextProps, CustomTextState> {
 
 const styles = StyleSheet.create({
     defaultText: {
-        fontFamily: "Montserrat Regular",
+        // fontFamily: "Montserrat Regular",
         fontSize: 16
     },
     heading: {
@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
         paddingBottom: 7
     },
     bold: {
-        fontFamily: "Montserrat Bold"
+        // fontFamily: "Montserrat Bold"
+        fontWeight: "bold"
     }
 });
 
