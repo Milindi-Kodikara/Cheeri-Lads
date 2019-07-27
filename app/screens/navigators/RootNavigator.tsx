@@ -23,10 +23,10 @@ const RootNavigation = createAppContainer(createSwitchNavigator(
     {
         EventFeed: {
             screen: ({screenProps, navigation}: CustomNavigatorProps) => <EventFeed
-                navigateToEventDetails={(eventID) => navigation.navigate("EventDetails", {eventID})}
+                navigateToEventDetails={(eventID) => navigation.navigate("EventDetailScreen", {eventID})}
             />
         },
-        EventDetails: {
+        EventDetailScreen: {
             screen: ({screenProps, navigation}: CustomNavigatorProps) => <EventDetails
                 eventID={navigation.getParam("eventID", null)}
             />
