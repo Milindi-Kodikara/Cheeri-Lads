@@ -1,23 +1,11 @@
 import React from 'react';
 import getCustomRouter, {RequiredProps, TabInfusedProps} from "./CustomRouter";
 import {createStackNavigator} from "react-navigation";
-import {CustomNavigatorProps, NavigationProp} from "./RootNavigator";
 import EventFeed from "../EventFeed";
-import { Button, Text, Platform} from "react-native";
 import CustomText from "../../components/CustomText";
-import CustomButton from "../../components/CustomButton";
 import { Icon } from "react-native-elements";
-import Container from "../../containers/Container";
 import EventDetails from "../EventDetails";
-import Query from "react-apollo";
-import gql from "graphql-tag";
 
-
-interface EventFeedStackProps {
-}
-
-interface EventFeedStackState {
-}
 
 interface NavigatorProps extends RequiredProps {
     screenProps: {
@@ -34,11 +22,11 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
             navigateToEventDetails={(eventID: string) => navigation.navigate("EventDetails", {eventID})}
         />,
         navigationOptions: ({ navigation, screenProps }: TabInfusedProps) => ({
-            headerLeft: <Text style={{ marginLeft: 10 }} onPress={() => {screenProps.tabNavigation.navigate("Filter")}}>Filter</Text >,
+            headerLeft: <Icon name={'settings'} containerStyle={{ marginLeft: 10 }} onPress={() => {}}>Filter</Icon>,
             // Make this get current Month name
-            headerTitle: () => <Text>Agenda</Text>,
+            headerTitle: () => <CustomText subheading bold>Agenda</CustomText>,
             headerRight: (
-                <Icon name={'search'} containerStyle={{ marginRight: 10 }} onPress={() => {screenProps.tabNavigation.navigate("Search")}}/>
+                <Icon name={'search'} containerStyle={{ marginRight: 10 }} onPress={() => {}}/>
             ),
 
         })
@@ -49,7 +37,10 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
             navigation
         }: TabInfusedProps) => <EventDetails
             eventID={navigation.getParam("eventID")}
-        />
+        />,
+        navigationOptions: {
+            headerTitle: () => <CustomText subheading bold>Event</CustomText>
+        }
     }
 }));
 

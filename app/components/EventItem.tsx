@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Icon} from "react-native-elements";
 import Container from "../containers/Container";
+import CustomText from "./CustomText";
 
 interface EventItemProps {
     id: string;
@@ -30,16 +31,16 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
 
         return <Container row style={[styles.Card, {borderColor: this.props.colour}]}>
             <View style={{flex: 1, height: 75}}>
-                <Text style={styles.Title}>{this.props.name}</Text>
+                <CustomText bold style={styles.Title}>{this.props.name}</CustomText>
                 <Text style={styles.SubTitle}>{this.props.organiser}</Text>
                 <Text style={styles.LocationTitle}>{this.props.location}</Text>
             </View>
-            <View style={{ alignItems: 'right'}}>
+            <View style={{ alignItems: 'flex-end'}}>
                 <Container row>
                     <Icon name={'schedule'}/>
                     <View style={{}}>
                         <Text style={styles.EventTime}>{this.props.start.toLocaleString('en-GB', {
-                            hour: 'numeric', minute: 'numeric', hour12: 'true'
+                            hour: 'numeric', minute: 'numeric', hour12: true
                         })}</Text></View>
                 </Container>
             </View>

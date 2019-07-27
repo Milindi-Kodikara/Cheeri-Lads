@@ -56,16 +56,16 @@ type Data = {
 
 export default class EventFeed extends React.Component<EventFeedProps, EventFeedState> {
     render() {
-        return <Query<Data, {}> query={GET_EVENTS}>{({data, error}) => {
+        return <Query<Data, {}> query={GET_EVENTS}>{({data, error, loading}) => {
             console.log("PLEASE", data);
-            console.log(data.allEvents ? data.allEvents.edges.map((base) => ({
+            console.log( !loading ? data.allEvents.edges.map((base) => ({
                 ...base.node,
                 start: new Date(base.node.start),
                 end: new Date(base.node.end)
             })) : []);
 
             return <View>
-                <EventList events={data.allEvents ? data.allEvents.edges.map((base) => ({
+                <EventList events={!loading ? data.allEvents.edges.map((base) => ({
                     ...base.node,
                     start: new Date(base.node.start),
                     end: new Date(base.node.end),
