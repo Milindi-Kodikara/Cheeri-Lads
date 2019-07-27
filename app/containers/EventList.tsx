@@ -3,6 +3,10 @@ import EventItem from "../components/EventItem";
 import _ from "underscore";
 import {View, Text, StyleSheet} from "react-native";
 
+const organisers ={
+    tpc: 'The Programming Club',
+    csit: 'CSIT Society'
+};
 
 const events = [
     {
@@ -12,6 +16,7 @@ const events = [
         end: new Date().toLocaleTimeString(),
         name: '101 Web Dev',
         location: '80.5.10',
+        organiser: organisers.tpc,
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }, {
@@ -19,8 +24,9 @@ const events = [
         eventDate: new Date(),
         start: new Date().toLocaleTimeString(),
         end: new Date().toLocaleTimeString(),
-        name: 'Python',
+        name: 'Fun with Python',
         location: '12.10.11',
+        organiser: organisers.csit,
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }, {
@@ -30,6 +36,7 @@ const events = [
         end: new Date().toLocaleTimeString(),
         name: 'Git Crash Course',
         location: '80.06.11',
+        organiser: organisers.tpc,
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }
@@ -62,6 +69,7 @@ export default class EventList extends React.Component<EventListProps, EventList
                         name={event.name}
                         start={event.start}
                         end={event.end}
+                        organiser={event.organiser}
                         description={event.description}
                         navigateToEventDetails={this.props.navigateToEventDetails}
                         location={event.location}
