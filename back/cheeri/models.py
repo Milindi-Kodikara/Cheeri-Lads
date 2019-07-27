@@ -22,7 +22,7 @@ class Feed(models.Model):
     last_updated = models.CharField(max_length=100)
 
 
-class Agenda(models.Model):
+class Calendar(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200)
     feeds = models.ManyToManyField("Feed", blank=True, related_name="calendars")
