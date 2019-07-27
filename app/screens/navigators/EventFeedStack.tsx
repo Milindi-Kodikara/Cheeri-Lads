@@ -3,6 +3,7 @@ import getCustomRouter, {RequiredProps} from "./CustomRouter";
 import {createStackNavigator} from "react-navigation";
 import {CustomNavigatorProps} from "./RootNavigator";
 import EventFeed from "../EventFeed";
+import {Text} from "react-native";
 
 
 interface EventFeedStackProps {
@@ -19,9 +20,15 @@ interface NavigatorProps extends RequiredProps {
 
 export default getCustomRouter<NavigatorProps>(createStackNavigator({
     EventScreen: {
-        screen: ({screenProps, navigation}: CustomNavigatorProps & {screenProps: {navigateToEvent(e: string): void}}) => <EventFeed
+        screen: ({
+            screenProps,
+            navigation
+        }: CustomNavigatorProps & {screenProps: {navigateToEvent(e: string): void}}) => <EventFeed
             navigateToEventDetails={(eventID: string) => screenProps.navigateToEvent(eventID)}
-        />
+        />,
+        navigationOptions: {
+            headerTitle: () => <Text>Hey</Text>
+        }
     }
 }));
 
