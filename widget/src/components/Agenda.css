@@ -1,0 +1,26 @@
+.page{
+    background-color: #cacfd2;
+    padding-top: 1px;
+    padding-bottom:5px;
+    text-align:left
+}
+
+.header{
+    text-align:center;
+}
+
+.tags{
+    color:darkgray;
+    text-align:left;
+    font-style:italic;
+}
+
+.event_section{
+    background-color:white;
+}
+
+.event_name{
+    position:relative;
+    text-align: center;
+    right:300px;
+}

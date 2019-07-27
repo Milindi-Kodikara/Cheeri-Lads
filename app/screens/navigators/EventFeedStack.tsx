@@ -34,7 +34,7 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
             navigateToEventDetails={(eventID: string) => navigation.navigate("EventDetails", {eventID})}
         />,
         navigationOptions: ({ navigation, screenProps }: TabInfusedProps) => ({
-            headerLeft: <Text style={{ marginLeft: 10 }} onPress={() => { }}>Filter</Text >,
+            headerLeft: <Text style={{ marginLeft: 10 }} onPress={() => {screenProps.tabNavigation.navigate("Filter")}}>Filter</Text >,
             // Make this get current Month name
             headerTitle: () => <Text>Agenda</Text>,
             headerRight: (
