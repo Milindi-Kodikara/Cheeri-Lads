@@ -25,7 +25,7 @@ SECRET_KEY = 'kx5v09g+b3od-*bm=iwhud(hv_+f4l268!8d_u+8^hl5^eq+u+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mouse", "192.168.43.116"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cheeri.apps.CheeriConfig',
     'corsheaders',
+    "graphene_django",
     'rest_framework'
 ]
 
@@ -123,4 +124,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+GRAPHENE = {
+    "SCHEMA": "back.schema.schema"
+}
+STATIC_URL = "/static/"
