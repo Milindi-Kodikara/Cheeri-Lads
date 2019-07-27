@@ -25,8 +25,8 @@ def update_feed(feed):
             event_feed_id=event["id"],
             start=event["start"]["dateTime"],
             end=event["end"]["dateTime"],
-            location=event["location"],
-            description=event["description"]
+            location=event["location"] if "location" in event else "",
+            description=event["description"] if "description" in event else ""
             )
 
     feed.last_updated = datetime.now().isoformat() + "Z"
