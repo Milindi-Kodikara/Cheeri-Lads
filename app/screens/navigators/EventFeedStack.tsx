@@ -8,7 +8,7 @@ import CustomText from "../../components/CustomText";
 import CustomButton from "../../components/CustomButton";
 import { Icon } from "react-native-elements";
 import Container from "../../containers/Container";
-
+import EventDetails from "../EventDetails";
 
 
 interface EventFeedStackProps {
@@ -23,21 +23,32 @@ interface NavigatorProps extends RequiredProps {
     }
 }
 
+type CustomProps = CustomNavigatorProps & {screenProps: {navigateToEvent(e: string): void}};
+
 export default getCustomRouter<NavigatorProps>(createStackNavigator({
-    EventScreen: {
+    EventFeed: {
         screen: ({
             screenProps,
             navigation
-        }: CustomNavigatorProps & {screenProps: {navigateToEvent(e: string): void}}) => <EventFeed
-            navigateToEventDetails={(eventID: string) => screenProps.navigateToEvent(eventID)}
+        }: CustomProps) => <EventFeed
+            navigateToEventDetails={(eventID: string) => navigation.navigate("EventDetails", {eventID})}
         />,
         navigationOptions: {
-                // Make this get current Month name
-                headerTitle: () => <Text>Month</Text>,
+            // Make this get current Month name
+            headerTitle: () => <Text>Month</Text>,
             headerRight: (
                 <Icon name={'search'} containerStyle={{ marginRight: 10 }}/>
             ),
+
         }
+    },
+    EventDetails: {
+        screen: ({
+            screenProps,
+            navigation
+        }: CustomProps) => <EventDetails
+            eventID={"abcd"}
+        />
     }
 }));
 

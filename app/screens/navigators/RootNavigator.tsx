@@ -24,11 +24,6 @@ const RootNavigation = createAppContainer(createSwitchNavigator(
     {
         EventFeed: {
             screen: EventFeedStack
-        },
-        EventDetailScreen: {
-            screen: ({screenProps, navigation}: CustomNavigatorProps) => <EventDetails
-                eventID={navigation.getParam("eventID", null)}
-            />
         }
     }
 ));
