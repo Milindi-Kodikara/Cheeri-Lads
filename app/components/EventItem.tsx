@@ -11,6 +11,7 @@ interface EventItemProps {
     description: string;
     location: string;
     colour: string;
+    organiser: string;
     navigateToEventDetails(eventID: string): void
 }
 
@@ -26,16 +27,19 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
             month: 'long',
             day: 'numeric',
             hour: 'numeric',
-            minute: 'numeric'
+            minute: 'numeric',
+            hour12: true
+
         };
         return <Container row style={[styles.Card, {borderColor: this.props.colour}]}>
             <View style={{flex: 1}}>
                 <Text style={styles.Heading}>{this.props.name}</Text>
-                <Text>{this.props.location}</Text>
+                <Text style={{fontSize: 10}}>{this.props.organiser}</Text>
             </View>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end', paddingRight: 10}}>
-                <Text style={styles.Dates}>{this.props.start.toLocaleString('en-GB', options)}</Text>
-                <Text style={styles.Dates}>{this.props.end.toLocaleString('en-GB', options)}</Text>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingRight: 10}}>
+                <Text style={{fontSize: 11}}>{this.props.start.toLocaleString('en-GB', options)}</Text>
+                <Text style={{fontSize: 11}}>{this.props.location}</Text>
+                {/*<Text style={styles.Dates}>{this.props.end.toLocaleString('en-GB', options)}</Text>*/}
             </View>
             <Icon name={'chevron-right'} onPress={() => this.props.navigateToEventDetails(this.props.id)}/>
         </Container>
@@ -51,12 +55,8 @@ const styles = StyleSheet.create({
     },
 
     Heading: {
-        fontSize: 20,
+        fontSize: 15,
         color: "#000"
-    },
-
-    Dates: {
-        fontSize: 10
     },
 
     GeneralText: {},
