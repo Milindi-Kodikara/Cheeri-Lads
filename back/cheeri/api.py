@@ -18,6 +18,7 @@ def update_feed(feed):
     events = service.events().list(calendarId=calendar_id, updatedMin=feed.last_updated).execute()
     
 
+    print(feed.id)
     for event in events["items"]:
         feed.events.create(
             name=event["summary"],

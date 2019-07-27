@@ -11,6 +11,7 @@ class Event(models.Model):
     end = models.DateTimeField(blank=True, null=True)
     description = models.CharField(max_length=500)
     location = models.CharField(max_length=200)
+    feed = models.ForeignKey("Feed", blank=True, related_name="events", on_delete=models.CASCADE)
 
 class Feed(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -19,7 +20,6 @@ class Feed(models.Model):
     calendar_id = models.CharField(max_length=200, default="")
     color = models.CharField(max_length=200)
     last_updated = models.CharField(max_length=100)
-    events = models.ManyToManyField("Event", blank=True, related_name="feed")
 
 
 class Calendar(models.Model):
