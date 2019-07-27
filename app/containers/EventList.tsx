@@ -30,6 +30,7 @@ const events = [
 ];
 
 interface EventListProps {
+    navigateToEventDetails(eventID: string): void
 }
 
 interface EventListState {
@@ -37,6 +38,7 @@ interface EventListState {
 
 export default class EventList extends React.Component<EventListProps, EventListState> {
     render() {
+
         let grouping = this.groupByDate();
 
         return <View>

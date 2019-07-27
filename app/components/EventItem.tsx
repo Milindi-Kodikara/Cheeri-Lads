@@ -11,6 +11,7 @@ interface EventItemProps {
     description: string;
     location: string;
     colour: string;
+    navigateToEventDetails(eventID: string): void
 }
 
 interface EventItemState {
@@ -36,7 +37,7 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
                 <Text style={styles.Dates}>{this.props.start.toLocaleString('en-GB', options)}</Text>
                 <Text style={styles.Dates}>{this.props.end.toLocaleString('en-GB', options)}</Text>
             </View>
-            <Icon name={'chevron-right'}></Icon>
+            <Icon name={'chevron-right'} onPress={() => this.props.navigateToEventDetails(this.props.id)}/>
         </Container>
     }
 }

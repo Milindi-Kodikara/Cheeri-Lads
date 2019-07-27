@@ -14,7 +14,7 @@ export default class EventFeed extends React.Component<EventFeedProps, EventFeed
     render() {
         return <View>
             <Text style={styles.Heading}>Monthly Feed</Text>
-            <EventList/>
+            <EventList navigateToEventDetails={this.props.navigateToEventDetails}/>
             <TouchableOpacity onPress={() => this.props.navigateToEventDetails("abc")}>
                 <Text>click me</Text>
             </TouchableOpacity>
