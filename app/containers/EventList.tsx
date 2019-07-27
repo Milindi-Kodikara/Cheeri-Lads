@@ -43,7 +43,9 @@ export default class EventList extends React.Component<EventListProps, EventList
                 return (
                     <View><View style={styles.Divider}>
                         <Text style={styles.DividerText}>
-                            {eventsIndividuals[0].start.toLocaleDateString()}</Text></View>
+                            {eventsIndividuals[0].start.toLocaleString('en-GB', {
+                                day: 'numeric', month: 'short', weekday: 'long'
+                            })}</Text></View>
                         {eventsIndividuals.map((event: EventItemData) => <EventItem
                             key={event.id}
                             id={event.id}
