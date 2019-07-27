@@ -57,6 +57,7 @@ export default class EventList extends React.Component<EventListProps, EventList
                         start={event.start}
                         end={event.end}
                         description={event.description}
+                        navigateToEventDetails={this.props.navigateToEventDetails}
                         location={"This is where you should go!"}
                         // imageURL={event.imageURL}
                     />)}
