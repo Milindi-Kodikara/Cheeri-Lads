@@ -85,7 +85,9 @@ const styles = StyleSheet.create({
 
     TitleBorder: {
         padding: 5,
-        marginLeft: 25,
+        paddingLeft: 10,
+        borderLeftWidth: 5,
+        borderLeftColor: "#00F",
         backgroundColor: "#20c3ff"
     }
 

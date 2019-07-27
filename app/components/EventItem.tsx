@@ -45,8 +45,7 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
 const styles = StyleSheet.create({
     Card: {
         padding: 10,
-        borderLeftWidth: 2,
-        marginLeft: 25,
+        borderLeftWidth: 5,
         borderBottomColor: "#8a8a8a",
         borderBottomWidth: 1
     },
