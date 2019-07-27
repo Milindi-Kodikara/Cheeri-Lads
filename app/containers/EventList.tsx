@@ -52,7 +52,7 @@ export default class EventList extends React.Component<EventListProps, EventList
                         key={event.id}
                         id={event.id}
                         // clubName={"TPC"}
-                        colour={"#FF0000"}
+                        colour={"#FF0001"}
                         name={event.name}
                         start={event.start}
                         end={event.end}
@@ -80,15 +80,15 @@ const styles = StyleSheet.create({
 
     Titles: {
         fontSize: 15,
-        color: "#000"
+        color: "#fff"
     },
 
     TitleBorder: {
         padding: 5,
         paddingLeft: 10,
-        borderLeftWidth: 5,
-        borderLeftColor: "#00F",
-        backgroundColor: "#20c3ff"
+        // borderLeftWidth: 5,
+        // borderLeftColor: "#00F",
+        backgroundColor: "#26282A"
     }
 
 });
