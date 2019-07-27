@@ -28,6 +28,7 @@ const events = [
 ];
 
 interface EventListProps {
+    navigateToEventDetails(eventID: string): void
 }
 
 interface EventListState {
@@ -36,6 +37,7 @@ interface EventListState {
 export default class EventList extends React.Component<EventListProps, EventListState> {
     render() {
         return (events.map((event) => <EventItem
+            navigateToEventDetails={this.props.navigateToEventDetails}
             key={event.id}
             id={event.id}
             // clubName={"TPC"}
