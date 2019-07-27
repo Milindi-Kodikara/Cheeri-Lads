@@ -18,7 +18,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-elements": "^1.1.0",
     "react-native-web": "^0.11.4",
-    "react-navigation": "^3.11.1"
+    "react-navigation": "^3.11.1",
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
     "@types/expo": "^32.0.13",

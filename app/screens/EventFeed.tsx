@@ -16,15 +16,13 @@ export default class EventFeed extends React.Component<EventFeedProps, EventFeed
             <Text style={styles.Heading}>Monthly Feed</Text>
             <EventList/>
             <TouchableOpacity onPress={() => this.props.navigateToEventDetails("abc")}>
-                <Text>clck me</Text>
+                <Text>click me</Text>
             </TouchableOpacity>
         </View>
     }
 }
 
 const styles = StyleSheet.create({
-
-
     Heading: {
         padding: 25,
         fontSize: 25,
