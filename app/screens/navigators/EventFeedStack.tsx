@@ -1,7 +1,7 @@
 import React from 'react';
-import getCustomRouter, {RequiredProps} from "./CustomRouter";
+import getCustomRouter, {RequiredProps, TabInfusedProps} from "./CustomRouter";
 import {createStackNavigator} from "react-navigation";
-import {CustomNavigatorProps} from "./RootNavigator";
+import {CustomNavigatorProps, NavigationProp} from "./RootNavigator";
 import EventFeed from "../EventFeed";
 import { Button, Text, Platform} from "react-native";
 import CustomText from "../../components/CustomText";
@@ -9,6 +9,8 @@ import CustomButton from "../../components/CustomButton";
 import { Icon } from "react-native-elements";
 import Container from "../../containers/Container";
 import EventDetails from "../EventDetails";
+import Query from "react-apollo";
+import gql from "graphql-tag";
 
 
 interface EventFeedStackProps {
@@ -23,19 +25,17 @@ interface NavigatorProps extends RequiredProps {
     }
 }
 
-type CustomProps = CustomNavigatorProps & {screenProps: {navigateToEvent(e: string): void}};
-
 export default getCustomRouter<NavigatorProps>(createStackNavigator({
     EventFeed: {
         screen: ({
             screenProps,
             navigation
-        }: CustomProps) => <EventFeed
+        }: TabInfusedProps) => <EventFeed
             navigateToEventDetails={(eventID: string) => navigation.navigate("EventDetails", {eventID})}
         />,
-        navigationOptions: ({navigation, screenProps}: CustomProps) => ({
+        navigationOptions: ({navigation, screenProps}: TabInfusedProps) => ({
             // Make this get current Month name
-            headerTitle: () => <Text style={{ marginLeft: 10}}>Month</Text>,
+            headerTitle: () => <Text style={{ marginLeft: 10}}>Som Mon</Text>,
             headerRight: (
                 <Icon name={'search'} containerStyle={{ marginRight: 10 }} onPress={() => {screenProps.tabNavigation.navigate("Search")}}/>
             ),
@@ -46,7 +46,7 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
         screen: ({
             screenProps,
             navigation
-        }: CustomProps) => <EventDetails
+        }: TabInfusedProps) => <EventDetails
             eventID={"abcd"}
         />
     }

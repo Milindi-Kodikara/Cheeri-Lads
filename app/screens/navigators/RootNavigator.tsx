@@ -1,10 +1,21 @@
 import React from 'react';
-import {createAppContainer, createSwitchNavigator, NavigationContainerComponent, NavigationParams, NavigationRoute, NavigationScreenProp, createStackNavigator} from 'react-navigation'
+import {
+    createAppContainer,
+    createSwitchNavigator,
+    NavigationContainerComponent,
+    NavigationParams,
+    NavigationRoute,
+    NavigationScreenProp,
+    createStackNavigator,
+    HeaderBackButton
+} from 'react-navigation'
 import EventFeed from '../EventFeed';
 import EventDetails from '../EventDetails';
 import EventFeedStack from "./EventFeedStack";
 import Search from "../Search";
-import getCustomRouter from "./CustomRouter";
+import getCustomRouter, {TabInfusedProps} from "./CustomRouter";
+import {SearchBar} from "react-native-elements";
+import CustomText from "../../components/CustomText";
 
 
 interface RootNavigatorProps {
@@ -17,9 +28,11 @@ export interface AppProps {
 
 }
 
-export interface CustomNavigatorProps {
-    navigation: NavigationScreenProp<NavigationRoute<NavigationParams>, NavigationParams>;
-    screenProps: AppProps
+export type NavigationProp = NavigationScreenProp<NavigationRoute<NavigationParams>, NavigationParams>;
+
+export interface CustomNavigatorProps<ScreenProps = AppProps> {
+    navigation: NavigationProp;
+    screenProps: ScreenProps
 }
 
 const RootNavigation = createAppContainer(createSwitchNavigator(
@@ -27,7 +40,19 @@ const RootNavigation = createAppContainer(createSwitchNavigator(
         EventFeed: {
             screen: EventFeedStack
         },
-        Search: getCustomRouter(createStackNavigator({Search}))
+        Search: {
+            screen: getCustomRouter(createStackNavigator({
+                Search: {
+                    screen: Search,
+                    navigationOptions: ({screenProps: {tabNavigation}, navigation}: TabInfusedProps) => ({
+                        headerLeft: <HeaderBackButton onPress={() => {
+                            tabNavigation.navigate("EventFeed")
+                        }}/>
+                    })
+                }
+            }))
+
+        }
     }
 ));
 
@@ -44,7 +69,7 @@ export default class RootNavigator extends React.Component<RootNavigatorProps, R
     render() {
         return <RootNavigation
             ref={nav => this.navigator = nav}
-            screenProps ={{
+            screenProps={{
                 ...this.props
             }}
         />

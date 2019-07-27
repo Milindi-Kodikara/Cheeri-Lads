@@ -1,7 +1,5 @@
 import React from 'react';
-import CustomText from "../components/CustomText";
 import { SearchBar } from 'react-native-elements';
-
 
 interface SearchProps {
 }
@@ -23,7 +21,6 @@ export default class Search extends React.Component<SearchProps, SearchState> {
         const { search } = this.state;
         return (
             <SearchBar
-                platform="ios"
                 placeholder="Search..."
                 onChangeText={this.updateSearch}
                 value={search}
