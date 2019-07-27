@@ -3,8 +3,12 @@ import getCustomRouter, {RequiredProps} from "./CustomRouter";
 import {createStackNavigator} from "react-navigation";
 import {CustomNavigatorProps} from "./RootNavigator";
 import EventFeed from "../EventFeed";
-import {Text} from "react-native";
+import { Button, Text, Platform} from "react-native";
 import CustomText from "../../components/CustomText";
+import CustomButton from "../../components/CustomButton";
+import { Icon } from "react-native-elements";
+import Container from "../../containers/Container";
+
 
 
 interface EventFeedStackProps {
@@ -28,7 +32,11 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
             navigateToEventDetails={(eventID: string) => screenProps.navigateToEvent(eventID)}
         />,
         navigationOptions: {
-            headerTitle: () => <CustomText bold>Hey</CustomText>
+                // Make this get current Month name
+                headerTitle: () => <Text>Month</Text>,
+            headerRight: (
+                <Icon name={'search'} containerStyle={{ marginRight: 10 }}/>
+            ),
         }
     }
 }));
