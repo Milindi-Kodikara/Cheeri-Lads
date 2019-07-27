@@ -5,6 +5,7 @@ from graphene_django.types import ObjectType, DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 from cheeri.models import Calendar, Event, Feed
 from cheeri.api import update_feed
+import base64  
 
 class EventNode(DjangoObjectType):
     class Meta:
@@ -54,6 +55,13 @@ class SubscribeMutation(graphene.Mutation):
         calendar.feeds.create(token=token, calendar_id=calendar_id, name=name, color=color, events=[])
         return SubscribeMutation(ok=True)
 
+def get_id(uuid):                                                               
+    """                                                                         
+    Gets the internal database id from a node id                                
+    (Relay scrambles the ids this way)                                          
+    """                                                                         
+    return base64.b64decode(uuid.encode('utf-8')).decode('utf-8').split(":")[1] 
+
 class UpdateFeed(graphene.Mutation):
     class Arguments:
         # The input arguments for this mutation
@@ -62,7 +70,8 @@ class UpdateFeed(graphene.Mutation):
     ok = graphene.Boolean()
 
     def mutate(self, info, feed_id):
-        feed = Feed.objects.get(pk=feed_id)
+        feed = Feed.objects.get(pk=get_id(feed_id))
+
         update_feed(feed)
         return SubscribeMutation(ok=True)
 

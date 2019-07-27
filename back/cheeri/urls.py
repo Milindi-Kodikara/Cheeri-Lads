@@ -1,6 +1,6 @@
-from cheeri.views import EventViewSet
-from rest_framework.routers import DefaultRouter
+from django.urls import path
+from django.views.generic import TemplateView
 
-router = DefaultRouter()
-router.register(r'events', EventViewSet)
-urlpatterns = router.urls
+urlpatterns = [
+    path("calendars/", TemplateView.as_view(template_name="calendars.html"))
+]
