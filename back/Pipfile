@@ -13,6 +13,7 @@ graphene-django = "*"
 django-filter = "*"
 oauth2client = "*"
 google-api-python-client = "*"
+django-ical = {editable = true,git = "https://github.com/Hazelfire/django-ical.git"}
 
 [requires]
 python_version = "3.7"

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "16fa89dc5be6197a1d0a9f75f039b9691532ff51ff5b14df24aa30fefa5c25d9"
+            "sha256": "c23bce20cda9ab51cfbd4b975f695f8e5cadf38af634ece11ec05c9907932645"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -52,6 +52,18 @@
             ],
             "index": "pypi",
             "version": "==2.2.0"
+        },
+        "django-ical": {
+            "editable": true,
+            "git": "https://github.com/Hazelfire/django-ical.git",
+            "ref": "c59e9aae46da4344d1385b45bb7f2f070a7eedb1"
+        },
+        "django-recurrence": {
+            "hashes": [
+                "sha256:37a78a902381102b311a77efd7b17b07fa6629980cb14fe1578d4fc14988e143",
+                "sha256:b42c705be041cf23a9e633053edb068d2f1317f3829e4b49c8004c67cdfd8ab1"
+            ],
+            "version": "==1.10.0"
         },
         "django-rest-framework": {
             "hashes": [
@@ -127,6 +139,13 @@
             ],
             "version": "==0.13.0"
         },
+        "icalendar": {
+            "hashes": [
+                "sha256:07c2447a1d44cbb27c90b8c6a5c98e890cc1853c6223e2a52195cddec26c6356",
+                "sha256:83f7248b7485ddd29c7d69b706b21c441e34855d9c1d888939fd24aefdd9d19b"
+            ],
+            "version": "==4.0.3"
+        },
         "oauth2client": {
             "hashes": [
                 "sha256:b8a81cc5d60e2d364f0b1b98f958dbd472887acaf1a5b05e21c28c31a2d6d3ac",
@@ -155,6 +174,13 @@
                 "sha256:f309b6c94724aeaf7ca583feb1cc70430e10d7551de5e36edfc1ae6909bcfb3c"
             ],
             "version": "==0.2.5"
+        },
+        "python-dateutil": {
+            "hashes": [
+                "sha256:7e6584c74aeed623791615e26efd690f29817a27c73085b78e4bad02493df2fb",
+                "sha256:c89805f6f4d64db21ed966fda138f8a5ed7a4fdbc1a8ee329ce1b74e3c74da9e"
+            ],
+            "version": "==2.8.0"
         },
         "pytz": {
             "hashes": [
