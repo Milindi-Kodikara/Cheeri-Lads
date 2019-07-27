@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     Divider: {
         padding: 5,
         paddingLeft: 10,
-        backgroundColor: "#F0F7F7"
+        backgroundColor: "#F0F0F0"
     }
 
 });

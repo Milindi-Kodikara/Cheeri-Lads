@@ -12,6 +12,7 @@ interface EventItemProps {
     location: string;
     colour: string;
     organiser: string;
+
     navigateToEventDetails(eventID: string): void
 }
 
@@ -35,12 +36,17 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
             <View style={{flex: 1, height: 75}}>
                 <Text style={styles.Heading}>{this.props.name}</Text>
                 <Text style={styles.SubHeading}>{this.props.organiser}</Text>
-                <Text style={ styles.SubHeading }>{this.props.location}</Text>
+                <Text style={styles.SubHeading}>{this.props.location}</Text>
             </View>
-            <View style={{flex: 1, justifyContent: 'right', alignItems: 'flex-end', paddingRight: 10}}>
-                <Text style={{fontSize: 11}}>{this.props.start.toLocaleString('en-GB', options)}</Text>
-                {/* <Text style={{fontSize: 11}}>{this.props.location}</Text> */}
-                {/*<Text style={styles.Dates}>{this.props.end.toLocaleString('en-GB', options)}</Text>*/}
+            <View style={{flex: 1}}>
+                <Container row style={{alignItems: 'center', paddingRight: 10}}>
+                    <Icon name={'schedule'}/>
+                    <View style={{flex: 1}}>
+                        <Text style={{
+                            fontSize: 11,
+                            padding: 10
+                        }}>{this.props.start.toLocaleString('en-GB', options)}</Text></View>
+                </Container>
             </View>
             <Icon name={'chevron-right'} onPress={() => this.props.navigateToEventDetails(this.props.id)}/>
         </Container>
