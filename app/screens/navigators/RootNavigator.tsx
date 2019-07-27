@@ -23,13 +23,7 @@ export interface CustomNavigatorProps {
 const RootNavigation = createAppContainer(createSwitchNavigator(
     {
         EventFeed: {
-            screen: ({screenProps, navigation}: CustomNavigatorProps) => <EventFeedStack
-                navigation={navigation}
-                screenProps={{
-                    ...screenProps,
-                    navigateToEvent: (eventID: string) => navigation.navigate("EventDetailScreen", {eventID})
-                }}
-            />
+            screen: EventFeedStack
         },
         EventDetailScreen: {
             screen: ({screenProps, navigation}: CustomNavigatorProps) => <EventDetails

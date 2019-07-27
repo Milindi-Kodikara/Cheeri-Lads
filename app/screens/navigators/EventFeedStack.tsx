@@ -23,4 +23,5 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
             navigateToEventDetails={(eventID: string) => screenProps.navigateToEvent(eventID)}
         />
     }
-}))
+}));
+
