@@ -13,6 +13,7 @@ import EventFeed from '../EventFeed';
 import EventDetails from '../EventDetails';
 import EventFeedStack from "./EventFeedStack";
 import Search from "../Search";
+import Filter from "../Filter";
 import getCustomRouter, {TabInfusedProps} from "./CustomRouter";
 import {SearchBar} from "react-native-elements";
 import CustomText from "../../components/CustomText";
@@ -48,6 +49,19 @@ const RootNavigation = createAppContainer(createSwitchNavigator(
                         headerLeft: <HeaderBackButton onPress={() => {
                             tabNavigation.navigate("EventFeed")
                         }}/>
+                    })
+                }
+            }))
+
+        },
+        Filter: {
+            screen: getCustomRouter(createStackNavigator({
+                Filter: {
+                    screen: Filter,
+                    navigationOptions: ({ screenProps: { tabNavigation }, navigation }: TabInfusedProps) => ({
+                        headerLeft: <HeaderBackButton onPress={() => {
+                            tabNavigation.navigate("EventFeed")
+                        }} />
                     })
                 }
             }))
