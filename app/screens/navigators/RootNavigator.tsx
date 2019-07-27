@@ -3,6 +3,7 @@ import {createAppContainer, createSwitchNavigator, NavigationContainerComponent,
 import EventFeed from '../EventFeed';
 import EventDetails from '../EventDetails';
 import EventFeedStack from "./EventFeedStack";
+import Search from "../Search";
 
 
 interface RootNavigatorProps {
@@ -24,7 +25,8 @@ const RootNavigation = createAppContainer(createSwitchNavigator(
     {
         EventFeed: {
             screen: EventFeedStack
-        }
+        },
+        Search: Search
     }
 ));
 

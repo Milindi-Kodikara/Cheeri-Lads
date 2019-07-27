@@ -28,5 +28,4 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: "#00F"
     }
-
 });
