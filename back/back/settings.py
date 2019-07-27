@@ -25,7 +25,7 @@ SECRET_KEY = 'kx5v09g+b3od-*bm=iwhud(hv_+f4l268!8d_u+8^hl5^eq+u+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["mouse", "192.168.43.116"]
+ALLOWED_HOSTS = ["mouse", "192.168.43.116", "localhost"]
 
 
 # Application definition

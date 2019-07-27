@@ -1,8 +1,10 @@
 import React from 'react';
-import {createAppContainer, createSwitchNavigator, NavigationContainerComponent, NavigationParams, NavigationRoute, NavigationScreenProp} from 'react-navigation'
+import {createAppContainer, createSwitchNavigator, NavigationContainerComponent, NavigationParams, NavigationRoute, NavigationScreenProp, createStackNavigator} from 'react-navigation'
 import EventFeed from '../EventFeed';
 import EventDetails from '../EventDetails';
 import EventFeedStack from "./EventFeedStack";
+import Search from "../Search";
+import getCustomRouter from "./CustomRouter";
 
 
 interface RootNavigatorProps {
@@ -24,7 +26,8 @@ const RootNavigation = createAppContainer(createSwitchNavigator(
     {
         EventFeed: {
             screen: EventFeedStack
-        }
+        },
+        Search: getCustomRouter(createStackNavigator({Search}))
     }
 ));
 
