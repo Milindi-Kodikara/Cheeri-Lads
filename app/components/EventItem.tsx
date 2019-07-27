@@ -11,6 +11,7 @@ interface EventItemProps {
     description: string;
     location: string;
     colour: string;
+    organiser: string;
     navigateToEventDetails(eventID: string): void
 }
 
@@ -26,16 +27,20 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
             month: 'long',
             day: 'numeric',
             hour: 'numeric',
-            minute: 'numeric'
+            minute: 'numeric',
+            hour12: true
+
         };
         return <Container row style={[styles.Card, {borderColor: this.props.colour}]}>
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, height: 75}}>
                 <Text style={styles.Heading}>{this.props.name}</Text>
-                <Text>{this.props.location}</Text>
+                <Text style={styles.SubHeading}>{this.props.organiser}</Text>
+                <Text style={ styles.SubHeading }>{this.props.location}</Text>
             </View>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end', paddingRight: 10}}>
-                <Text style={styles.Dates}>{this.props.start.toLocaleString('en-GB', options)}</Text>
-                <Text style={styles.Dates}>{this.props.end.toLocaleString('en-GB', options)}</Text>
+            <View style={{flex: 1, justifyContent: 'right', alignItems: 'flex-end', paddingRight: 10}}>
+                <Text style={{fontSize: 11}}>{this.props.start.toLocaleString('en-GB', options)}</Text>
+                {/* <Text style={{fontSize: 11}}>{this.props.location}</Text> */}
+                {/*<Text style={styles.Dates}>{this.props.end.toLocaleString('en-GB', options)}</Text>*/}
             </View>
             <Icon name={'chevron-right'} onPress={() => this.props.navigateToEventDetails(this.props.id)}/>
         </Container>
@@ -46,17 +51,23 @@ const styles = StyleSheet.create({
     Card: {
         padding: 10,
         borderLeftWidth: 5,
-        borderBottomColor: "#8a8a8a",
-        borderBottomWidth: 1
+        borderBottomColor: "#DFE1E5",
+        borderBottomWidth: .5
     },
 
     Heading: {
-        fontSize: 20,
+        fontSize: 15,
         color: "#000"
     },
 
+    SubHeading: {
+        fontSize: 14,
+        color: "#26282A"
+    },
+
     Dates: {
-        fontSize: 10
+        fontSize: 11,
+        color: "#3F3C42"
     },
 
     GeneralText: {},
