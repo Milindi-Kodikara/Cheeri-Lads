@@ -23,15 +23,11 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
 
     render() {
         let options = {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
             hour: 'numeric',
             minute: 'numeric',
             hour12: true
-
         };
+
         return <Container row style={[styles.Card, {borderColor: this.props.colour}]}>
             <View style={{flex: 1, height: 75}}>
                 <Text style={styles.Heading}>{this.props.name}</Text>
@@ -45,7 +41,7 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
                         <Text style={{
                             fontSize: 11,
                             padding: 10
-                        }}>{this.props.start.toLocaleString('en-GB', options)}</Text></View>
+                        }}>{this.props.start.toLocaleTimeString()}</Text></View>
                 </Container>
             </View>
             <Icon name={'chevron-right'} onPress={() => this.props.navigateToEventDetails(this.props.id)}/>
