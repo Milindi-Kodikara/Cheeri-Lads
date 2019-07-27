@@ -1,7 +1,7 @@
 import React from 'react';
 import {createAppContainer, createSwitchNavigator, NavigationContainerComponent, NavigationParams, NavigationRoute, NavigationScreenProp} from 'react-navigation'
-import EventFeed from "../EventFeed";
-import EventDetails from "../EventDetails";
+import EventFeed from '../EventFeed';
+import EventDetails from '../EventDetails';
 
 
 interface RootNavigatorProps {
