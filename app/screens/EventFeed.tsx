@@ -26,6 +26,7 @@ const GET_EVENTS = gql`query GET_EVENTS {
                 feed {
                     id
                     name
+                    color
                 }
             }
         }
@@ -45,6 +46,7 @@ type Data = {
                 feed: {
                     id: string;
                     name: string;
+                    color: string;
                 }
             }
         }[]
@@ -54,26 +56,30 @@ type Data = {
 
 export default class EventFeed extends React.Component<EventFeedProps, EventFeedState> {
     render() {
-        return <Query<Data, {}> query={GET_EVENTS}>{({data: {allEvents}}) => {
-            // console.log(allEvents ? allEvents.edges.map((base) => base.node) : []);
+        return <Query<Data, {}> query={GET_EVENTS}>{({data, error}) => {
+            console.log("PLEASE", data);
+            console.log(data.allEvents ? data.allEvents.edges.map((base) => ({
+                ...base.node,
+                start: new Date(base.node.start),
+                end: new Date(base.node.end)
+            })) : []);
 
             return <View>
-                <EventList events={allEvents ? allEvents.edges.map((base) => ({
+                <EventList events={data.allEvents ? data.allEvents.edges.map((base) => ({
                     ...base.node,
                     start: new Date(base.node.start),
-                    end: new Date(base.node.end)
+                    end: new Date(base.node.end),
+                    colour: "#" + base.node.feed.color
                 })) : []} navigateToEventDetails={this.props.navigateToEventDetails}/>
-                <TouchableOpacity onPress={() => this.props.navigateToEventDetails("abc")}>
-                </TouchableOpacity>
             </View>
         }}</Query>
-    }
-}
+        }
+            }
 
-const styles = StyleSheet.create({
-    Heading: {
-        padding: 25,
-        fontSize: 25,
-        color: "#00F"
-    }
-});
+            const styles = StyleSheet.create({
+                Heading: {
+                padding: 25,
+                fontSize: 25,
+                color: "#00F"
+            }
+            });
