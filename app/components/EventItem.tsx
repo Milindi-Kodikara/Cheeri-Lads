@@ -18,8 +18,8 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
     render() {
         return <View>
             <Text>{this.props.name}</Text>
-            <Text>{this.props.start}</Text>
-            <Text>{this.props.end}</Text>
+            <Text>{this.props.start.toISOString()}</Text>
+            <Text>{this.props.end.toISOString()}</Text>
             <Text>{this.props.location}</Text>
             <Text>{this.props.description}</Text>
         </View>
@@ -27,10 +27,7 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
 }
 
 const styles = StyleSheet.create({
-
     card: {
 
     }
-
-
-})
+});
