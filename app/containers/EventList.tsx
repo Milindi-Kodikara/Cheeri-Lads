@@ -7,22 +7,22 @@ import {View, Text, StyleSheet} from "react-native";
 const events = [
     {
         id: 'abcde',
-        start: new Date(),
-        end: new Date(),
+        start: new Date().toLocaleTimeString(),
+        end: new Date().toLocaleTimeString(),
         name: 'Some Event Name',
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }, {
         id: 'abcdf',
-        start: new Date(),
-        end: new Date(),
+        start: new Date().toLocaleTimeString(),
+        end: new Date().toLocaleTimeString(),
         name: 'Some Event Name',
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }, {
         id: 'abcdg',
-        start: new Date(1),
-        end: new Date(),
+        start: new Date(1).toLocaleTimeString(),
+        end: new Date().toLocaleTimeString(),
         name: 'Some Event Name',
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
