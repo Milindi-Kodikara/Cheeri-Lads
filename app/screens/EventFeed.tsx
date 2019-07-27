@@ -74,12 +74,12 @@ export default class EventFeed extends React.Component<EventFeedProps, EventFeed
             </View>
         }}</Query>
         }
-            }
+    }
 
-            const styles = StyleSheet.create({
-                Heading: {
-                padding: 25,
-                fontSize: 25,
-                color: "#00F"
-            }
-            });
+    const styles = StyleSheet.create({
+        Heading: {
+        padding: 25,
+        fontSize: 25,
+        color: "#00F"
+    }
+});
