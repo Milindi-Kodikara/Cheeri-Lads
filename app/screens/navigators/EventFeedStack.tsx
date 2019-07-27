@@ -4,7 +4,6 @@ import {createStackNavigator} from "react-navigation";
 import {CustomNavigatorProps} from "./RootNavigator";
 import EventFeed from "../EventFeed";
 import {Text} from "react-native";
-import CustomText from "../../components/CustomText";
 
 
 interface EventFeedStackProps {
@@ -28,7 +27,7 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
             navigateToEventDetails={(eventID: string) => screenProps.navigateToEvent(eventID)}
         />,
         navigationOptions: {
-            headerTitle: () => <CustomText bold>Hey</CustomText>
+            headerTitle: () => <Text>Hey</Text>
         }
     }
 }));
