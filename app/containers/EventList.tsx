@@ -35,20 +35,20 @@ export default class EventList extends React.Component<EventListProps, EventList
 
         let grouping = this.groupByDate();
 
-        console.log(grouping);
+        // console.log(grouping);
 
         return <View>
             {Object.values(grouping).map((eventsIndividuals, date) => {
-                console.log("EI:", eventsIndividuals);
+                // console.log("EI:", eventsIndividuals);
                 return (
                     <View><View style={styles.Divider}>
                         <Text style={styles.DividerText}>
                             {eventsIndividuals[0].start.toLocaleDateString()}</Text></View>
-                        {eventsIndividuals.map((event: EventItemData) => <EventItem
-                            key={event.id}
+                        {eventsIndividuals.map((event: EventItemData, index) => <EventItem
+                            key={index}
                             id={event.id}
                             // clubName={"TPC"}
-                            colour={"#FF0001"}
+                            colour={event.colour}
                             name={event.name}
                             start={event.start}
                             end={event.end}

@@ -47,7 +47,7 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
             screenProps,
             navigation
         }: TabInfusedProps) => <EventDetails
-            eventID={"abcd"}
+            eventID={navigation.getParam("eventID")}
         />
     }
 }));
