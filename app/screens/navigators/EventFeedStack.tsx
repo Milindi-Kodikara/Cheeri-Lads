@@ -33,14 +33,14 @@ export default getCustomRouter<NavigatorProps>(createStackNavigator({
         }: CustomProps) => <EventFeed
             navigateToEventDetails={(eventID: string) => navigation.navigate("EventDetails", {eventID})}
         />,
-        navigationOptions: {
+        navigationOptions: ({navigation, screenProps}: CustomProps) => ({
             // Make this get current Month name
-            headerTitle: () => <Text>Month</Text>,
+            headerTitle: () => <Text style={{ marginLeft: 10}}>Month</Text>,
             headerRight: (
-                <Icon name={'search'} containerStyle={{ marginRight: 10 }}/>
+                <Icon name={'search'} containerStyle={{ marginRight: 10 }} onPress={() => {screenProps.tabNavigation.navigate("Search")}}/>
             ),
 
-        }
+        })
     },
     EventDetails: {
         screen: ({

@@ -28,7 +28,7 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
             hour: 'numeric',
             minute: 'numeric'
         };
-        return <Container row style={styles.Card}>
+        return <Container row style={[styles.Card, {borderColor: this.props.colour}]}>
             <View style={{flex: 1}}>
                 <Text style={styles.Heading}>{this.props.name}</Text>
                 <Text>{this.props.location}</Text>
@@ -45,11 +45,9 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
 const styles = StyleSheet.create({
     Card: {
         padding: 10,
-        borderLeftColor: "#000",
-        borderLeftWidth: 2,
-        marginBottom: 10,
-        marginLeft: 25,
-        marginRight: 10
+        borderLeftWidth: 5,
+        borderBottomColor: "#8a8a8a",
+        borderBottomWidth: 1
     },
 
     Heading: {
