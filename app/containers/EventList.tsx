@@ -7,23 +7,29 @@ import {View, Text, StyleSheet} from "react-native";
 const events = [
     {
         id: 'abcde',
+        eventDate: new Date(),
         start: new Date().toLocaleTimeString(),
         end: new Date().toLocaleTimeString(),
-        name: 'Some Event Name',
+        name: '101 Web Dev',
+        location: '80.5.10',
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }, {
         id: 'abcdf',
+        eventDate: new Date(),
         start: new Date().toLocaleTimeString(),
         end: new Date().toLocaleTimeString(),
-        name: 'Some Event Name',
+        name: 'Python',
+        location: '12.10.11',
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }, {
         id: 'abcdg',
+        eventDate: new Date(),
         start: new Date(1).toLocaleTimeString(),
         end: new Date().toLocaleTimeString(),
-        name: 'Some Event Name',
+        name: 'Git Crash Course',
+        location: '80.06.11',
         description: 'Some Event Description',
         imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
     }
@@ -43,10 +49,10 @@ export default class EventList extends React.Component<EventListProps, EventList
 
         return <View>
             {Object.values(grouping).map((eventsIndividuals, date) => (
-                <View><View style={styles.TitleBorder}>
-                    <Text style={styles.Titles}>
-                        {eventsIndividuals[0].start.toLocaleString('en-GB', {
-                            day: 'numeric', month: 'numeric', year: 'numeric', weekday: 'long'
+                <View><View style={styles.Divider}>
+                    <Text style={styles.DividerText}>
+                        {eventsIndividuals[0].eventDate.toLocaleString('en-GB', {
+                            day: 'numeric', month: 'short', weekday: 'long'
                         })}</Text></View>
                     {eventsIndividuals.map((event) => <EventItem
                         key={event.id}
@@ -58,7 +64,7 @@ export default class EventList extends React.Component<EventListProps, EventList
                         end={event.end}
                         description={event.description}
                         navigateToEventDetails={this.props.navigateToEventDetails}
-                        location={"This is where you should go!"}
+                        location={event.location}
                         // imageURL={event.imageURL}
                     />)}
                 </View>
@@ -78,17 +84,16 @@ export default class EventList extends React.Component<EventListProps, EventList
 
 const styles = StyleSheet.create({
 
-    Titles: {
+    DividerText: {
         fontSize: 15,
-        color: "#fff"
+        fontWeight: "bold",
+        color: "#000"
     },
 
-    TitleBorder: {
+    Divider: {
         padding: 5,
         paddingLeft: 10,
-        // borderLeftWidth: 5,
-        // borderLeftColor: "#00F",
-        backgroundColor: "#26282A"
+        backgroundColor: "#F0F7F7"
     }
 
 });
