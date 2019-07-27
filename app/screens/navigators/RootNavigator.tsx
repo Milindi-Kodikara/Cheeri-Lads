@@ -2,6 +2,7 @@ import React from 'react';
 import {createAppContainer, createSwitchNavigator, NavigationContainerComponent, NavigationParams, NavigationRoute, NavigationScreenProp} from 'react-navigation'
 import EventFeed from '../EventFeed';
 import EventDetails from '../EventDetails';
+import EventFeedStack from "./EventFeedStack";
 
 
 interface RootNavigatorProps {
@@ -22,8 +23,12 @@ export interface CustomNavigatorProps {
 const RootNavigation = createAppContainer(createSwitchNavigator(
     {
         EventFeed: {
-            screen: ({screenProps, navigation}: CustomNavigatorProps) => <EventFeed
-                navigateToEventDetails={(eventID) => navigation.navigate("EventDetailScreen", {eventID})}
+            screen: ({screenProps, navigation}: CustomNavigatorProps) => <EventFeedStack
+                navigation={navigation}
+                screenProps={{
+                    ...screenProps,
+                    navigateToEvent: (eventID: string) => navigation.navigate("EventDetailScreen", {eventID})
+                }}
             />
         },
         EventDetailScreen: {
