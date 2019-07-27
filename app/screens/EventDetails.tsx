@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native'
-import Query from "react-apollo";
+import {Query} from "react-apollo";
 import gql from "graphql-tag";
 import CustomText from "../components/CustomText";
 import CustomButton from "../components/CustomButton";
@@ -15,6 +15,22 @@ interface EventDetailsState {
     registered: boolean;
 }
 
+const GET_EVENT = gql`query GET_EVENT($id: ID!) {
+    event(id: $id) {
+        id
+        name
+        image
+        start
+        end
+        description
+        location
+        feed {
+            id
+            name
+        }
+    }
+}`;
+
 export default class EventDetails extends React.Component<EventDetailsProps, EventDetailsState> {
 
     constructor(props) {
@@ -25,17 +41,30 @@ export default class EventDetails extends React.Component<EventDetailsProps, Eve
     }
 
     render() {
+        console.log(this.props.eventID);
 
-        let event = {
-            id: 'abcde',
-            eventDate: new Date(),
-            start: new Date(),
-            end: new Date(),
-            name: '101 Web Dev',
-            location: '80.5.10',
-            organiser: "The Programming Club",
-            description: 'Wanna develop a webpage with our Boi Nolan?! Well look no more coz we are hosting a workshop just for that!!! Also featuring boy wonder Thomas "Bert" Frantzzzzzz!',
-            imageURL: 'https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg'
+        return <Query<{}, { id: string }>
+            query={GET_EVENT}
+            variables={{id: this.props.eventID}}
+            fetchPolicy={"network-only"}
+        >{({data, error, loading}) => {
+            console.log("dataaaa", data, error, loading);
+            return this.renderDetails(data)
+        }}</Query>
+    }
+
+    private renderDetails({event}) {
+
+        if (!event) {
+            return <CustomText>Loading!</CustomText>
+        }
+
+        event = {
+            ...event,
+            start: new Date(event.start),
+            end: new Date(event.end),
+            organiser: event.feed.name,
+            imageURL: event.image ? event.image : "https://sportslinkt-images.s3-ap-southeast-2.amazonaws.com/profile_410_600.jpg"
         };
 
         let options = {
@@ -47,6 +76,7 @@ export default class EventDetails extends React.Component<EventDetailsProps, Eve
             minute: 'numeric',
             hour12: true
         };
+
         return <View>
             <View style={styles.Header}>
                 <Text style={{fontSize: 20}}>{event.name}</Text>
@@ -56,7 +86,7 @@ export default class EventDetails extends React.Component<EventDetailsProps, Eve
             <CustomButton style={styles.Button} onPress={() => {
                 this.setState({registered: !this.state.registered})
             }}>{this.state.registered ? " Cancel " : "Register"}</CustomButton>
-            <Container row style={{alignItems: 'flex-start', borderTopColor: "#F0F0F0", borderTopWidth: 1, marginLeft: 10, marginRight:10}}>
+            <Container row style={{alignItems: 'flex-start', borderTopColor: "#F0F0F0", borderTopWidth: 1, marginLeft: 10, marginRight: 10}}>
                 <Text style={{fontSize: 14, padding: 20, flex: 1}}>{event.description}</Text>
                 <View style={{flex: 1, padding: 20}}>
                     <Container row style={{alignItems: 'center', paddingRight: 10}}>
@@ -84,7 +114,7 @@ export default class EventDetails extends React.Component<EventDetailsProps, Eve
                 <Image source={{uri: event.imageURL}} style={styles.Avatar}/>
             </Container>
             {/*Add the map at the end*/}
-        </View>
+        </View>;
     }
 }
 

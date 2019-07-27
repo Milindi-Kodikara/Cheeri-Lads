@@ -30,18 +30,17 @@ export default class EventItem extends React.Component<EventItemProps, EventItem
 
         return <Container row style={[styles.Card, {borderColor: this.props.colour}]}>
             <View style={{flex: 1, height: 75}}>
-                <Text style={styles.Heading}>{this.props.name}</Text>
-                <Text style={styles.SubHeading}>{this.props.organiser}</Text>
-                <Text style={styles.SubHeading}>{this.props.location}</Text>
+                <Text style={styles.Title}>{this.props.name}</Text>
+                <Text style={styles.SubTitle}>{this.props.organiser}</Text>
+                <Text style={styles.LocationTitle}>{this.props.location}</Text>
             </View>
-            <View style={{flex: 1}}>
-                <Container row style={{alignItems: 'center', paddingRight: 10}}>
+            <View style={{ alignItems: 'right'}}>
+                <Container row>
                     <Icon name={'schedule'}/>
-                    <View style={{flex: 1}}>
-                        <Text style={{
-                            fontSize: 11,
-                            padding: 10
-                        }}>{this.props.start.toLocaleTimeString()}</Text></View>
+                    <View style={{}}>
+                        <Text style={styles.EventTime}>{this.props.start.toLocaleString('en-GB', {
+                            hour: 'numeric', minute: 'numeric', hour12: 'true'
+                        })}</Text></View>
                 </Container>
             </View>
             <Icon name={'chevron-right'} onPress={() => this.props.navigateToEventDetails(this.props.id)}/>
@@ -57,19 +56,25 @@ const styles = StyleSheet.create({
         borderBottomWidth: .5
     },
 
-    Heading: {
+    Title: {
         fontSize: 15,
         color: "#000"
     },
 
-    SubHeading: {
+    SubTitle: {
         fontSize: 14,
         color: "#26282A"
     },
 
-    Dates: {
+    LocationTitle: {
+        fontSize: 13,
+        color: "#7E7E7E"
+    },
+
+    EventTime: {
         fontSize: 11,
-        color: "#3F3C42"
+        paddingStart: 5,
+        padding: 2
     },
 
     GeneralText: {},
