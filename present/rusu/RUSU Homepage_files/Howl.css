@@ -1,0 +1,167 @@
+﻿.howl {
+    padding: 0;
+    list-style: none;
+    background-color:#222;
+    
+}
+
+    .howl:empty {
+        display: none;
+    }
+
+.howl-slot {
+    position: relative;
+}
+
+.howl-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding: 10px;
+    color: #CCC;
+    outline: none !important;
+    filter: alpha(opacity=25);
+    -webkit-opacity: 0.25;
+    -moz-opacity: 0.25;
+    opacity: 0.25;
+    text-shadow: none;
+}
+
+.howl-message {
+    position: relative;
+    padding: 10px 30px 13px 65px;
+    color: #f0f0f0;
+    font-size: 13px;
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid #EFEFEF;
+}
+
+    .howl-message:hover .howl-close {
+        color: #fff;
+        filter: alpha(opacity=100);
+        -webkit-opacity: 1;
+        -moz-opacity: 1;
+        opacity: 1;
+    }
+
+    .howl-message a {
+        color: #f0ad4e;
+        text-decoration: none;
+    }
+
+        .howl-message a:hover {
+            text-decoration: underline;
+        }
+
+.howl-title {
+    color:#fff;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+    .howl-title:empty {
+        display: none;
+    }
+
+.howl-message-inner:before {
+    position: absolute;
+    top: 15px;
+    left: 18px;
+    z-index: 20;
+    display: block;
+    content: " ";
+    height: 13px;
+    width: 13px;
+    background-color: #999;
+    -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 50%;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 50%;
+    -moz-background-clip: padding;
+    border-radius: 50%;
+    background-clip: padding-box;
+}
+
+.howl-message.howl-danger .howl-message-inner:before {
+    background-color: #d9534f;
+}
+
+.howl-message.howl-info .howl-message-inner:before {
+    background-color: #3498db;
+}
+
+.howl-message.howl-success .howl-message-inner:before {
+    background-color: #5cb85c;
+}
+
+.howl-message.howl-warning .howl-message-inner:before {
+    background-color: #ff751a;
+}
+
+.howl-icon {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    z-index: 1000;
+    width: 1em;
+    font-size: 20px;
+    text-align: center;
+}
+
+.howl-has-icon .howl-message-inner:before {
+    display: none !important;
+}
+
+.howl-has-icon .howl-icon {
+    color: #bbb;
+}
+
+.howl-has-icon .howl-success .howl-icon {
+    color: #5cb85c;
+}
+
+.howl-has-icon .howl-warning .howl-icon {
+    color: #ff751a;
+}
+
+.howl-has-icon .howl-danger .howl-icon {
+    color: #d9534f;
+}
+
+.howl-has-icon .howl-info .howl-icon {
+    color: #3498db;
+}
+
+.howl {
+    position: fixed;
+    top: auto;
+    bottom: 10px;
+    right: auto;
+    left: 50%;
+    z-index: 1001;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    margin-left: -150px;
+}
+
+@media (min-width: 768px) {
+    .howl {
+        left: auto;
+        right: 30px;
+        width: 350px;
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+    .howl {
+        width: 375px;
+    }
+}

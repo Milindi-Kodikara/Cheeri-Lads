@@ -1,0 +1,94 @@
+﻿body {
+}
+
+
+.display-field label{
+    margin:0;
+    font-size:11px;
+    text-transform:uppercase;
+    font-weight:800;
+}
+
+.display-field p{
+    margin-top:-3px;
+    font-size:14px;
+    margin-bottom:3px;
+}
+
+
+
+
+.panel .portlet-tools {
+        float: left;
+        display: inline-block;
+        padding: 0;
+        margin: -3px -10px 0 0;
+    }
+
+        .panel .portlet-tools > li {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .panel .portlet-tools .btn-icon {
+            margin-top: -2px;
+            color: #555;
+            font-size: 16px;
+        }
+
+            .panel .portlet-tools .btn-icon:hover {
+                text-decoration: none;
+                background-color: #fff;
+            }
+
+            .panel .portlet-tools .btn-icon .caret {
+                margin-top: -3px;
+            }
+
+        .panel .portlet-tools .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+
+        .panel .portlet-tools .btn.btn-sm {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            margin-bottom: 0;
+        }
+
+        .panel .portlet-tools .form-control.input-sm {
+            display: inline-block;
+            width: 125px;
+            height: 26px;
+        }
+
+        .panel .portlet-tools .progress {
+            margin-top: 0;
+            margin-bottom: 0;
+            width: 125px;
+        }
+
+        .panel .portlet-tools .nav-tabs,
+        .panel .portlet-tools .nav-pills {
+            margin-bottom: 0;
+        }
+
+            .panel .portlet-tools .nav-pills > li > a {
+                padding: 2px 9px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            .panel .portlet-tools .nav-pills > li.active > a,
+            .panel .portlet-tools .nav-pills > li.active > a:hover,
+            .panel .portlet-tools .nav-pills > li.active > a:focus {
+                color: #fff;
+                background-color: #555;
+            }
+
+.label-lg{
+    font-size:16px;
+}
